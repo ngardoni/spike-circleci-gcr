@@ -1,0 +1,11 @@
+orbs:
+  gcp-gcr: circleci/gcp-gcr@x.y.z
+version: 2.1
+workflows:
+  build_and_push_image:
+    jobs:
+      - gcp-gcr/build-and-push-image:
+          context: playground
+          image: user-service
+          registry-url: eu.gcr.io
+          tag: $CIRCLE_SHA1
